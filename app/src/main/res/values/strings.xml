@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TourismApp</string>
+    <string name="Map">Map</string>
+    <string name="Sights">Sights</string>
+    <string name="Add">Add place</string>
+    <string name="InputFieldText">Text Field</string>
+
 </resources>
