@@ -3,6 +3,8 @@
     <string name="Map">Map</string>
     <string name="Sights">Sights</string>
     <string name="Add">Add place</string>
-    <string name="InputFieldText">Text Field</string>
+    <string name="InputFieldText">New Place</string>
+    <string name="Kremlin">Kremlin</string>
+    <string name="GAS">GAS</string>
 
 </resources>
