@@ -6,5 +6,8 @@
     <string name="InputFieldText">New Place</string>
     <string name="Kremlin">Kremlin</string>
     <string name="GAS">GAS</string>
+    <string name="LocationMSC">Location: Moscow</string>
+    <string name="Home">Home</string>
+    <string name="CardsTitle">Near You</string>
 
 </resources>

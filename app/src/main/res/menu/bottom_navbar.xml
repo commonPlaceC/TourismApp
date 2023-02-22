@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home_nav"
+        android:title="@string/Home"
+        android:icon="@drawable/home_icon_silhouette_svgrepo_com"/>
+    <item android:id="@+id/map_nav"
+        android:title="@string/Map"
+        android:icon="@drawable/map_svgrepo_com"/>
+</menu>

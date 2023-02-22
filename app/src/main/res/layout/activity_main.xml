@@ -6,65 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/Map"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/Sights"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="368dp"
-        android:layout_height="229dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="249dp"
+        android:paddingStart="@dimen/stand_layout_margin"
+        android:paddingEnd="@dimen/stand_layout_margin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="138dp"
-            android:layout_height="145dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:contentDescription="@string/Kremlin"
-            app:srcCompat="@drawable/kremlin" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="159dp"
             android:layout_height="126dp"
+            android:layout_below="@+id/textView2"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="@dimen/stand_layout_margin_extended"
+            android:layout_marginTop="@dimen/stand_layout_margin_extended"
+            android:layout_marginEnd="@dimen/stand_layout_margin_extended"
             android:contentDescription="@string/GAS"
             app:srcCompat="@drawable/preview_picture" />
 
@@ -84,6 +45,30 @@
             android:layout_marginTop="12dp"
             android:text="@string/GAS" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="127dp"
+            android:layout_height="133dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/stand_layout_margin_extended"
+            android:layout_marginEnd="@dimen/stand_layout_margin"
+            android:contentDescription="@string/Kremlin"
+            app:srcCompat="@drawable/moscow_svgrepo_com" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/CardsTitle"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -98,11 +83,11 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textSize="@dimen/stand_text_size"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="31dp"
-            android:layout_marginBottom="31dp"
+            android:layout_marginEnd="@dimen/main_button_margins"
+            android:layout_marginBottom="@dimen/main_button_margins"
             android:text="@string/Add"
             android:textAllCaps="false" />
 
@@ -115,5 +100,29 @@
             android:layout_marginBottom="72dp"
             android:hint="@string/InputFieldText" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/LocationMSC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_navbar"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
