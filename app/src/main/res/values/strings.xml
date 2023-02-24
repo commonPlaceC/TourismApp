@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TourismApp</string>
     <string name="Map">Map</string>
+    <string name="VisitsList">Visits</string>
     <string name="Sights">Sights</string>
     <string name="Add">Add place</string>
     <string name="InputFieldText">New Place</string>
@@ -9,5 +10,6 @@
     <string name="LocationMSC">Location: Moscow</string>
     <string name="Home">Home</string>
     <string name="CardsTitle">Near You</string>
+    <string name="ChangeLocation">Change Location</string>
 
 </resources>

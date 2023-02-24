@@ -76,20 +76,21 @@
         android:layout_height="220dp"
         android:layout_marginBottom="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:layout_editor_absoluteX="0dp">
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/stand_text_size"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="@dimen/main_button_margins"
             android:layout_marginBottom="@dimen/main_button_margins"
             android:text="@string/Add"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="myButtonOnClickListener"
+            android:textSize="@dimen/stand_text_size" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -99,10 +100,23 @@
             android:layout_marginTop="21dp"
             android:layout_marginBottom="72dp"
             android:hint="@string/InputFieldText" />
+
+        <Button
+            android:id="@+id/changeLocButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/main_button_margins"
+            android:layout_marginBottom="@dimen/main_button_margins"
+            android:textAllCaps="false"
+            android:textSize="@dimen/stand_text_size"
+            android:text="@string/ChangeLocation" />
+
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/locationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/LocationMSC"
@@ -119,6 +133,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomnav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_navbar"/>
