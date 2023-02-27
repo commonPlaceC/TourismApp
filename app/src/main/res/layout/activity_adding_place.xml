@@ -7,7 +7,6 @@
     tools:context=".AddingPlaceActivity">
 
     <EditText
-
         android:id="@+id/editLocation"
         android:layout_width="272dp"
         android:layout_height="48dp"
@@ -16,6 +15,7 @@
         android:ems="10"
         android:inputType=""
         android:textSize="@dimen/stand_text_size"
+        android:hint="@string/new_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +29,5 @@
         android:text="@string/ChangeLocation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

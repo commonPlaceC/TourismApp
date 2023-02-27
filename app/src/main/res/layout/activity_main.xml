@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nearYouTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/stand_layout_margin_extended"
         android:layout_marginTop="@dimen/stand_layout_margin_extended"
         android:text="@string/CardsTitle"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="@dimen/increased_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,12 +24,12 @@
         android:id="@+id/locationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="@dimen/stand_layout_margin_extended"
+        android:layout_marginStart="@dimen/stand_layout_margin_extended"
+        android:layout_marginTop="@dimen/stand_layout_margin_shorter"
         android:text="@string/LocationMSC"
         android:textSize="@dimen/min_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nearYouTitle" />
 
     <RelativeLayout
         android:layout_width="369dp"
@@ -40,7 +40,7 @@
         android:background="@drawable/near_card_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/locationName">
 
         <LinearLayout
             android:id="@+id/first_linear"
@@ -65,9 +65,9 @@
                     android:id="@+id/Gas_image"
                     android:layout_width="@dimen/stand_image_size"
                     android:layout_height="@dimen/stand_image_size"
+                    android:contentDescription="@string/GAS"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/gas_image"
-                    android:contentDescription="@string/GAS" />
+                    app:srcCompat="@drawable/gas_image" />
 
             </androidx.cardview.widget.CardView>
 
@@ -85,10 +85,10 @@
             android:id="@+id/second_linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="@dimen/stand_layout_margin_super_extended"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/stand_layout_margin_extended"
+            android:layout_marginEnd="@dimen/stand_layout_margin_super_extended"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="vertical"
@@ -105,43 +105,74 @@
                     android:id="@+id/theatre_image"
                     android:layout_width="@dimen/stand_image_size"
                     android:layout_height="@dimen/stand_image_size"
+                    android:contentDescription="@string/BT"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/bolshoi_theatre"
-                    android:contentDescription="@string/BT" />
+                    app:srcCompat="@drawable/bolshoi_theatre" />
 
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/theatre_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/min_text_size"
                 android:layout_marginTop="@dimen/stand_layout_margin"
-                android:text="@string/BT" />
+                android:text="@string/BT"
+                android:textSize="@dimen/min_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/third_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/first_linear"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/stand_layout_margin_super_extended"
+            android:layout_marginTop="@dimen/stand_layout_margin_extended"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="RelativeOverlap">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/third_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:id="@+id/lenin_image"
+                    android:layout_width="@dimen/stand_image_size"
+                    android:layout_height="@dimen/stand_image_size"
+                    android:contentDescription="@string/Lenin"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/lenin" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/lenin_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/stand_layout_margin"
+                android:text="@string/Lenin"
+                android:textSize="@dimen/min_text_size" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/linearlayout"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
         android:layout_width="386dp"
         android:layout_height="57dp"
-        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/stand_layout_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="@dimen/stand_layout_margin"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/curved_bottom_nav"
+        app:elevation="0dp"
+        app:menu="@menu/bottom_navbar" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomnav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/curved_bottom_nav"
-            app:elevation="0dp"
-            app:menu="@menu/bottom_navbar" />
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/changeLocButton"
@@ -152,7 +183,7 @@
         android:text="@string/ChangeLocation"
         android:textAllCaps="false"
         android:textSize="@dimen/stand_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/linearlayout"
+        app:layout_constraintBottom_toTopOf="@+id/bottomnav"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -166,7 +197,7 @@
         android:text="@string/Add"
         android:textSize="20sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/linearlayout"
+        app:layout_constraintBottom_toTopOf="@+id/bottomnav"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

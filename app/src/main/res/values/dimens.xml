@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="stand_layout_margin_shorter">7dp</dimen>
     <dimen name="stand_layout_margin">12dp</dimen>
     <dimen name="stand_layout_margin_extended">24dp</dimen>
     <dimen name="stand_layout_margin_super_extended">30dp</dimen>
     <dimen name="main_button_margins">31dp</dimen>
     <dimen name="stand_text_size">14sp</dimen>
     <dimen name="min_text_size">12sp</dimen>
-    <dimen name="increased_text_size">35sp</dimen>
+    <dimen name="increased_text_size">25sp</dimen>
+    <dimen name="max_text_size">35sp</dimen>
     <dimen name="stand_rounding">25dp</dimen>
     <dimen name="stand_circle_rounding">50dp</dimen>
     <dimen name="round_button_size">50dp</dimen>
