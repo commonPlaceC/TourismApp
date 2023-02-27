@@ -4,140 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_grey"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="249dp"
-        android:paddingStart="@dimen/stand_layout_margin"
-        android:paddingEnd="@dimen/stand_layout_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/stand_layout_margin_extended"
+        android:layout_marginTop="@dimen/stand_layout_margin_extended"
+        android:text="@string/CardsTitle"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="159dp"
-            android:layout_height="126dp"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="@dimen/stand_layout_margin_extended"
-            android:layout_marginTop="@dimen/stand_layout_margin_extended"
-            android:layout_marginEnd="@dimen/stand_layout_margin_extended"
-            android:contentDescription="@string/GAS"
-            app:srcCompat="@drawable/preview_picture" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView2"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/GAS" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="127dp"
-            android:layout_height="133dp"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/stand_layout_margin_extended"
-            android:layout_marginEnd="@dimen/stand_layout_margin"
-            android:contentDescription="@string/Kremlin"
-            app:srcCompat="@drawable/moscow_svgrepo_com" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="0dp"
-            android:text="@string/CardsTitle"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginBottom="180dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        tools:layout_editor_absoluteX="0dp">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="@dimen/main_button_margins"
-            android:layout_marginBottom="@dimen/main_button_margins"
-            android:text="@string/Add"
-            android:textAllCaps="false"
-            android:onClick="myButtonOnClickListener"
-            android:textSize="@dimen/stand_text_size" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_above="@+id/button"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="21dp"
-            android:layout_marginBottom="72dp"
-            android:hint="@string/InputFieldText" />
-
-        <Button
-            android:id="@+id/changeLocButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/main_button_margins"
-            android:layout_marginBottom="@dimen/main_button_margins"
-            android:textAllCaps="false"
-            android:textSize="@dimen/stand_text_size"
-            android:text="@string/ChangeLocation" />
-
-    </RelativeLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/locationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="@dimen/stand_layout_margin_extended"
         android:text="@string/LocationMSC"
+        android:textSize="@dimen/min_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="369dp"
+        android:layout_height="373dp"
+        android:layout_marginStart="@dimen/stand_layout_margin"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="@dimen/stand_layout_margin"
+        android:background="@drawable/near_card_container"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <LinearLayout
+            android:id="@+id/first_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/stand_layout_margin_super_extended"
+            android:layout_marginTop="@dimen/stand_layout_margin_extended"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/first_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:id="@+id/Gas_image"
+                    android:layout_width="@dimen/stand_image_size"
+                    android:layout_height="@dimen/stand_image_size"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/gas_image"
+                    android:contentDescription="@string/GAS" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/stand_layout_margin"
+                android:text="@string/GAS"
+                android:textSize="@dimen/min_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/second_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/stand_layout_margin_super_extended"
+            android:layout_marginTop="@dimen/stand_layout_margin_extended"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="RelativeOverlap">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/second_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:id="@+id/theatre_image"
+                    android:layout_width="@dimen/stand_image_size"
+                    android:layout_height="@dimen/stand_image_size"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/bolshoi_theatre"
+                    android:contentDescription="@string/BT" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/min_text_size"
+                android:layout_marginTop="@dimen/stand_layout_margin"
+                android:text="@string/BT" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="386dp"
+        android:layout_height="57dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/stand_layout_margin"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomnav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/bottom_navbar"/>
+            android:background="@drawable/curved_bottom_nav"
+            app:elevation="0dp"
+            app:menu="@menu/bottom_navbar" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/changeLocButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/stand_layout_margin_extended"
+        android:layout_marginBottom="@dimen/stand_layout_margin_extended"
+        android:text="@string/ChangeLocation"
+        android:textAllCaps="false"
+        android:textSize="@dimen/stand_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/linearlayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="@dimen/round_button_size"
+        android:layout_height="@dimen/round_button_size"
+        android:layout_marginEnd="@dimen/stand_layout_margin_extended"
+        android:layout_marginBottom="@dimen/stand_layout_margin_extended"
+        android:background="@drawable/round_button"
+        android:onClick="myButtonOnClickListener"
+        android:text="@string/Add"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/linearlayout"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

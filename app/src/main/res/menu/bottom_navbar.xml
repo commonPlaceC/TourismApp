@@ -6,7 +6,4 @@
     <item android:id="@+id/visits_nav"
         android:title="@string/VisitsList"
         android:icon="@drawable/map_svgrepo_com"/>
-    <item android:id="@+id/map_nav"
-        android:title="@string/VisitsList"
-        android:icon="@drawable/map_svgrepo_com"/>
 </menu>

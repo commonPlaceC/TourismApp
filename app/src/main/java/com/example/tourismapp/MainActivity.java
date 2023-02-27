@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "TourismApp";
+    public static final String TAG = "MainActivity";
     private static final int REQUEST_CODE = 1;
     private ActivityMainBinding binding;
 
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         TextView locationName = findViewById(R.id.locationName);
-        ImageView myImageView = findViewById(R.id.imageView);
+        ImageView myImageView = findViewById(R.id.Gas_image);
 
-        Button myButton = findViewById(R.id.button);
-        Log.d(TAG, binding.button.getText().toString());
+        Button myButton = findViewById(R.id.add_button);
+        Log.d(TAG, binding.add_button.getText().toString());
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationBarView bottomNavigationView = findViewById(R.id.bottomnav);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
