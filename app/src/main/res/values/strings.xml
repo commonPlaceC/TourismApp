@@ -5,10 +5,12 @@
     <string name="Sights">Sights</string>
     <string name="Add">+</string>
     <string name="InputFieldText">New Place</string>
+
     <string name="Kremlin">Kremlin</string>
     <string name="BT">Bolshoi Theatre</string>
     <string name="GAS">GAS</string>
     <string name="Lenin">Biblioteka Imeni Lenina</string>
+
     <string name="LocationMSC">Location: Moscow</string>
     <string name="Home">Home</string>
 

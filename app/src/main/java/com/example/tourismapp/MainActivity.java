@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView myImageView = findViewById(R.id.Gas_image);
 
         Button myButton = findViewById(R.id.add_button);
-        Log.d(TAG, binding.addButton.getText().toString());
+        myButton = (Button)binding.addButton;
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
