@@ -4,7 +4,9 @@
     <string name="VisitsList">Visits</string>
     <string name="Sights">Sights</string>
     <string name="Add">+</string>
+    <string name="AddNewPlace">Add new place</string>
     <string name="InputFieldText">New Place</string>
+    <string name="Cancel">Cancel</string>
 
     <string name="Kremlin">Kremlin</string>
     <string name="BT">Bolshoi Theatre</string>

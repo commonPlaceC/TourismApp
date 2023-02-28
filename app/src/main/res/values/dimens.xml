@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="nul">0dp</dimen>
+
     <dimen name="stand_layout_margin_shorter">7dp</dimen>
     <dimen name="stand_layout_margin">12dp</dimen>
     <dimen name="stand_layout_margin_extended">24dp</dimen>
@@ -7,6 +9,7 @@
     <dimen name="main_button_margins">31dp</dimen>
 
     <dimen name="stand_padding">7dp</dimen>
+    <dimen name="max_padding">40dp</dimen>
 
     <dimen name="stand_text_size">14sp</dimen>
     <dimen name="min_text_size">12sp</dimen>
