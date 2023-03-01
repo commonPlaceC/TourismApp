@@ -6,6 +6,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -59,71 +61,33 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        TextView locationName = findViewById(R.id.locationName);
-        ImageView myImageView = findViewById(R.id.Gas_image);
-
-        Button myButton;
-        myButton = (Button)binding.addButton;
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("Tourism App", "Button clicked with programing method");
-            }
-        });
-
-        Button changeLocButton = findViewById(R.id.changeLocButton);
-        changeLocButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String location = locationName.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), AddingPlaceActivity.class);
-                intent.putExtra("Location", location);
-                mStartForRegData.launch(intent);
-            }
-        });
-
-        Button addPlace = findViewById(R.id.add_button);
-        addPlace.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddVisit.class);
-                startActivity(intent);
-            }
-        });
-
-        NavigationBarView bottomNavigationView = findViewById(R.id.bottomnav);
+        NavigationBarView bottomNavigationView = binding.bottomnav;
+        switchFragment(new HomeFragment());
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            Fragment fragment;
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home_nav:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                        fragment = new HomeFragment();
+                        break;
                     case R.id.visits_nav:
-                        startActivity(new Intent(getApplicationContext(), VisitsListActivtiy.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                        fragment = new VisitsListFragment();
+                        break;
+                }
+                if (fragment != null) {
+                    switchFragment(fragment);
+                    return true;
                 }
                 return false;
             }
         });
 
     }
-
-    public void myButtonOnClickListener(View view) {
-        Log.d(TAG, "Button clicked with declaration method");
-    }
-
-    @SuppressLint("SetTextI18n")
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            String resultMessage = data.getStringExtra("Location");
-            TextView editText = findViewById(R.id.locationName);
-            editText.setText("Location: " + resultMessage);
-        }
+    private void switchFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .commit();
     }
 }

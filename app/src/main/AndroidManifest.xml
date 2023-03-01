@@ -18,9 +18,6 @@
             android:name=".AddingPlaceActivity"
             android:exported="false" />
         <activity
-            android:name=".VisitsListActivtiy"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
