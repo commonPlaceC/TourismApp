@@ -7,6 +7,29 @@
     android:background="@color/light_grey"
     tools:context=".AddVisit">
 
+    <TextView
+        android:id="@+id/nearYouTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/stand_layout_margin_extended"
+        android:layout_marginTop="@dimen/stand_layout_margin_extended"
+        android:text="@string/InputFieldText"
+        android:textColor="@color/black"
+        android:textSize="@dimen/increased_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/stand_layout_margin_super_extended"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nearYouTitle"
+        app:srcCompat="@drawable/travel" />
+
     <EditText
         android:id="@+id/editLocation"
         android:layout_width="325dp"
@@ -24,11 +47,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/changeButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/add_place"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/nul"
-        android:text="@string/AddNewPlace"
+        android:text="@string/Submit"
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/cancel_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,10 +61,10 @@
         android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue"
+        android:textColor="@color/light_red"
         android:theme="@style/Button.Transparent"
         android:stateListAnimator="@null"
-        android:layout_marginBottom="@dimen/stand_layout_margin"
+        android:layout_marginBottom="@dimen/min_layout_margin_shorter"
         android:text="@string/Cancel"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"

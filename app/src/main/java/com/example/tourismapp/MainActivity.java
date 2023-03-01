@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         TextView locationName = findViewById(R.id.locationName);
         ImageView myImageView = findViewById(R.id.Gas_image);
 
-        Button myButton = findViewById(R.id.add_button);
+        Button myButton;
         myButton = (Button)binding.addButton;
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,14 +71,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String location = locationName.getText().toString();
         Button changeLocButton = findViewById(R.id.changeLocButton);
         changeLocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String location = locationName.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), AddingPlaceActivity.class);
                 intent.putExtra("Location", location);
                 mStartForRegData.launch(intent);
+            }
+        });
+
+        Button addPlace = findViewById(R.id.add_button);
+        addPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddVisit.class);
+                startActivity(intent);
             }
         });
 

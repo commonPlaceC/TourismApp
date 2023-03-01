@@ -2,6 +2,7 @@
 <resources>
     <dimen name="nul">0dp</dimen>
 
+    <dimen name="min_layout_margin_shorter">2dp</dimen>
     <dimen name="stand_layout_margin_shorter">7dp</dimen>
     <dimen name="stand_layout_margin">12dp</dimen>
     <dimen name="stand_layout_margin_extended">24dp</dimen>
