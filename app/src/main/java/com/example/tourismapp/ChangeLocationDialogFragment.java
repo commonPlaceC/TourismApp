@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
@@ -18,29 +19,41 @@ import com.example.tourismapp.databinding.FragmentHomeBinding;
 
 public class ChangeLocationDialogFragment extends DialogFragment {
 
-    public final String TAG = "ChangeLocationDialogFragment";
+    public static final String TAG = "ChangeLocationDialogFragment";
     public FragmentChangeLocationBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
     }
+    @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-
-
-        Log.d(TAG, "_______________________");
-        Toast.makeText(getActivity(), "sdf", Toast.LENGTH_SHORT).show();
 
         binding = FragmentChangeLocationBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
-        // Create a new AlertDialog builder
-        return new AlertDialog.Builder(requireContext())
-                .setMessage("Message")
-                .setPositiveButton("ok", (dialog, which) -> {} )
-                .create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        EditText editText = binding.editText;
+        builder.setView(view)
+                .setTitle("Change Location")
+                .setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String input = editText.getText().toString();
+                        // Do something with the input here
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Close the dialog
+                        ChangeLocationDialogFragment.this.getDialog().cancel();
+                    }
+                });
+
+        // Create the AlertDialog object and return it
+        return builder.create();
     }
 
 }

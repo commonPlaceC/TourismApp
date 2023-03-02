@@ -9,30 +9,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:ignore="UselessParent">
 
         <EditText
             android:id="@+id/edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/InputFieldText"/>
+            android:layout_width="376dp"
+            android:layout_height="63dp"
+            android:hint="@string/new_location"
+            tools:ignore="Autofill,TextFields" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Cancel"/>
-
-            <Button
-                android:id="@+id/btn_apply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Submit"/>
+            android:orientation="horizontal"
+            tools:ignore="UselessLeaf">
         </LinearLayout>
 
     </LinearLayout>
