@@ -1,6 +1,7 @@
 package com.example.tourismapp;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -28,13 +29,87 @@ public class HomeFragment extends Fragment implements ChangeLocationDialogFragme
 
     private static final String TAG = "Home";
     private FragmentHomeBinding binding;
-    public HomeFragment() {
-        super(R.layout.fragment_home);
+    public HomeFragment() { super(R.layout.fragment_home); }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Toast.makeText(getContext(), "onAttach()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onAttach()");
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Toast.makeText(getContext(), "onCreate()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onCreate()");
+    }
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Toast.makeText(getContext(), "onViewCreated()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onViewCreated()");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Toast.makeText(getContext(), "onStart()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onStart()");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getContext(), "onResume()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onResume()");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Toast.makeText(getContext(), "onPause()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onPause()");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Toast.makeText(getContext(), "onStop()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onStop()");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Toast.makeText(getContext(), "onDestroyView()", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onDestroyView()");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getContext(), "onDestroy", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onDestroy");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Toast.makeText(getContext(), "onDetach", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onDetach");
+    }
+
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "onCreateView");
+
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
