@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment implements ChangeLocationDialogFragme
 
 
         FragmentManager fm = requireActivity().getSupportFragmentManager();
-        //TextView locationName = binding.locationName;
         Button changeLocButton = binding.changeLocButton;
 
         changeLocButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +54,8 @@ public class HomeFragment extends Fragment implements ChangeLocationDialogFragme
         addPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                new AddVisitDialogFragment().show(
+                        getParentFragmentManager(), AddVisitDialogFragment.TAG);
             }
         });
 

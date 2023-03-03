@@ -1,5 +1,7 @@
 package com.example.tourismapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,17 +16,12 @@ import android.widget.TextView;
 import com.example.tourismapp.databinding.FragmentHomeBinding;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+
 
 public class VisitsListFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private FragmentVisitsListBinding binding;
 
@@ -45,14 +42,17 @@ public class VisitsListFragment extends Fragment {
         View view = binding.getRoot();
 
         LinearLayout layout = binding.lLayout;
-        String[] list = getResources().getStringArray(R.array.visits_array);
 
-        for (String item : list) {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("Visits", Context.MODE_PRIVATE);
+        Map<String,?> allPrefs = prefs.getAll();
+
+        for (Map.Entry<String,?> entry : allPrefs.entrySet()){
             TextView textView = new TextView(getActivity());
-            textView.setText(item);
+            String textForView = entry.getKey().toString() + " | " + entry.getValue().toString();
+            textView.setText(textForView);
             layout.addView(textView);
         }
 
-        return inflater.inflate(R.layout.fragment_visits_list, container, false);
+        return binding.getRoot();
     }
 }

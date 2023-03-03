@@ -8,6 +8,8 @@
     <string name="InputFieldText">New Place</string>
     <string name="Cancel">Cancel</string>
     <string name="Submit">Submit</string>
+    <string name="locate">Use this device location</string>
+    <string name="PlaceName">Place name</string>
 
     <string name="Kremlin">Kremlin</string>
     <string name="BT">Bolshoi Theatre</string>

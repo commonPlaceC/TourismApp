@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChangeLocationDialogFragment">
-
+    tools:context=".AddVisitDialogFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +15,7 @@
             android:id="@+id/edit_text"
             android:layout_width="376dp"
             android:layout_height="63dp"
-            android:hint="@string/new_location"
+            android:hint="@string/PlaceName"
             tools:ignore="Autofill,TextFields" />
 
         <LinearLayout
@@ -26,12 +25,5 @@
             tools:ignore="UselessLeaf">
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/locate" />
-
     </LinearLayout>
-
 </FrameLayout>

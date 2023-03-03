@@ -5,24 +5,20 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
-import com.example.tourismapp.databinding.FragmentHomeBinding;
 
 import java.util.Objects;
 
 public class ChangeLocationDialogFragment extends DialogFragment {
 
     public static final String TAG = "ChangeLocationDialogFragment";
-    public static final String REQEUST_CODE = "Dia";
     public FragmentChangeLocationBinding binding;
     private String locationName = "";
 
@@ -45,8 +41,8 @@ public class ChangeLocationDialogFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            locationName = getArguments().getString("Location");
+        if (!(requireArguments().getString("Location")).isEmpty()) {
+            locationName = requireArguments().getString("Location");
         }
     }
     @NonNull

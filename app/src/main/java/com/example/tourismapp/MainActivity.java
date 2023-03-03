@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentContainerView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        SharedPreferences prefs = getSharedPreferences("Visits", MODE_PRIVATE);
+        prefs.edit().clear().apply();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Bolshoi Theatre", "Theatre Square, 1, Moskva, 125009");
+        editor.apply();
 
         NavigationBarView bottomNavigationView = binding.bottomnav;
         switchFragment(new HomeFragment());
