@@ -17,14 +17,37 @@ import androidx.fragment.app.DialogFragment;
 import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
 import com.example.tourismapp.databinding.FragmentHomeBinding;
 
+import java.util.Objects;
+
 public class ChangeLocationDialogFragment extends DialogFragment {
 
     public static final String TAG = "ChangeLocationDialogFragment";
+    public static final String REQEUST_CODE = "Dia";
     public FragmentChangeLocationBinding binding;
+    private String locationName = "";
 
+    public interface DialogListener {
+        void onDialogResult(String result);
+    }
+    private DialogListener listener;
+    public void setListener(DialogListener _listener) {
+        listener = _listener;
+    }
+
+    public static ChangeLocationDialogFragment newInstance(String key, String value) {
+        ChangeLocationDialogFragment dialogFragment = new ChangeLocationDialogFragment();
+        Bundle args = new Bundle();
+        args.putString(key, value);
+        dialogFragment.setArguments(args);
+
+        return dialogFragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            locationName = getArguments().getString("Location");
+        }
     }
     @NonNull
     @Override
@@ -36,19 +59,20 @@ public class ChangeLocationDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         EditText editText = binding.editText;
+        editText.setHint(locationName);
         builder.setView(view)
                 .setTitle("Change Location")
                 .setPositiveButton("Apply", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         String input = editText.getText().toString();
-                        // Do something with the input here
+                        listener.onDialogResult(input);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // Close the dialog
-                        ChangeLocationDialogFragment.this.getDialog().cancel();
+                        listener.onDialogResult("");
+                        Objects.requireNonNull(ChangeLocationDialogFragment.this.getDialog()).cancel();
                     }
                 });
 

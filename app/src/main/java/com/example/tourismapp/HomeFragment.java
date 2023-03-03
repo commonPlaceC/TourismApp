@@ -24,10 +24,9 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import org.w3c.dom.Text;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ChangeLocationDialogFragment.DialogListener {
 
     private static final String TAG = "Home";
-
     private FragmentHomeBinding binding;
     public HomeFragment() {
         super(R.layout.fragment_home);
@@ -47,8 +46,8 @@ public class HomeFragment extends Fragment {
         changeLocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new ChangeLocationDialogFragment().show(
-                        getParentFragmentManager(), ChangeLocationDialogFragment.TAG);
+                String location = ((TextView)binding.locationName).getText().toString().substring(9);
+                showMyDialog(location);
             }
         });
 
@@ -61,5 +60,19 @@ public class HomeFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    public void showMyDialog(String arg) {
+        String location = ((TextView)binding.locationName).getText().toString().substring(9);
+        ChangeLocationDialogFragment dialogFragment = ChangeLocationDialogFragment.newInstance("Location", location);
+        dialogFragment.setListener(this);
+        dialogFragment.show(getParentFragmentManager(), ChangeLocationDialogFragment.TAG);
+    }
+    @Override
+    public void onDialogResult(String result) {
+        if (!result.isEmpty()) {
+            String newLocationName = "Location: " + result;
+            ((TextView)binding.locationName).setText(newLocationName);
+        }
     }
 }
