@@ -36,22 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
     private ActivityMainBinding binding;
 
-    ActivityResultLauncher<Intent> mStartForRegData = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        Intent intent = result.getData();
-                        Bundle arguments = intent.getExtras();
-                        String resultString = arguments.getString("Location");
-                        Toast.makeText(getApplicationContext(), "New Location: " + resultString, Toast.LENGTH_LONG).show();
-                        resultString = "Location: " + resultString;
-                        ((TextView)findViewById(R.id.locationName)).setText(resultString);
-                    }
-                }
-            }
-    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

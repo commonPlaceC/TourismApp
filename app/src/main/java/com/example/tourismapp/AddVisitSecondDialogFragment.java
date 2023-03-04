@@ -16,11 +16,9 @@ import com.example.tourismapp.databinding.FragmentAddVisitDialogBinding;
 import com.example.tourismapp.databinding.FragmentAddVisitSecondDialogBinding;
 
 public class AddVisitSecondDialogFragment extends DialogFragment {
-
     public static final String TAG = "AddVisitSecond";
     public FragmentAddVisitSecondDialogBinding binding;
     private String arg;
-
 
     public static AddVisitSecondDialogFragment newInstance(String key, String value) {
         AddVisitSecondDialogFragment dialogFragment = new AddVisitSecondDialogFragment();
@@ -57,9 +55,7 @@ public class AddVisitSecondDialogFragment extends DialogFragment {
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                    }
+                    public void onClick(DialogInterface dialog, int id) { }
                 });
 
         return builder.create();

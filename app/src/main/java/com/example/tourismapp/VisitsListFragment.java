@@ -13,31 +13,22 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.tourismapp.databinding.FragmentHomeBinding;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
 
 public class VisitsListFragment extends Fragment {
-
     private FragmentVisitsListBinding binding;
-
     public VisitsListFragment() {
         super(R.layout.fragment_visits_list);
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         binding = FragmentVisitsListBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
