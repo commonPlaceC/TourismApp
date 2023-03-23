@@ -1,6 +1,8 @@
 package com.example.tourismapp;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,9 +24,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private final LayoutInflater inflater;
     private final List<Item> items;
 
+    private Context mContext;
+
     public MyRecyclerViewAdapter(Context context, List<Item> items) {
         this.inflater = LayoutInflater.from(context);
         this.items = items;
+        mContext = context;
     }
 
     @NonNull
@@ -43,6 +49,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i("Adapter", "WORK");
             }
         });
     }
