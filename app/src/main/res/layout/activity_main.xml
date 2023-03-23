@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_home" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnav"
         android:layout_width="380dp"

@@ -18,24 +18,20 @@
             android:layout_marginTop="@dimen/stand_layout_margin_extended"
             android:text="@string/VisitsTitle"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="@dimen/increased_text_size"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/l_layout"
-            android:layout_width="415dp"
-            android:layout_height="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listItem"
+            android:layout_width="match_parent"
+            android:layout_height="411dp"
             android:layout_marginTop="@dimen/stand_layout_margin_extended"
-            android:orientation="vertical"
-            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.428"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/visits_page_title">
-
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/visits_page_title" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

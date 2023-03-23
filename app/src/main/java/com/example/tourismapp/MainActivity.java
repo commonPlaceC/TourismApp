@@ -6,13 +6,22 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentResultListener;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +42,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
+    private static final String CHANNEL_ID = "no_1";
     private static final int REQUEST_CODE = 1;
     private ActivityMainBinding binding;
 
@@ -41,6 +51,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String name = getString(R.string.noti_channel_list);
+            String description = getString(R.string.noti_channel_list_desc);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+//                    if (ContextCompat.checkSelfPermission(requireActivity(),
+//                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                requestPermissions();
+//            }
+//        }
+        }
+        getSupportFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                String result = bundle.getString("key");
+                Log.i(TAG, result);
+            }
+        });
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -76,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void switchFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
+    private void switchFragment(Fragment fragment) {;
+            getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
                 .replace(R.id.fragmentContainerView, fragment)
                 .commit();
     }

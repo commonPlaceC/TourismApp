@@ -62,7 +62,8 @@
                     app:cardCornerRadius="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    app:cardElevation="0dp">
 
                     <ImageView
                         android:id="@+id/Gas_image"
@@ -102,7 +103,8 @@
                     app:cardCornerRadius="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    app:cardElevation="0dp">
 
                     <ImageView
                         android:id="@+id/theatre_image"
@@ -140,7 +142,8 @@
                     android:id="@+id/third_card"
                     app:cardCornerRadius="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:cardElevation="0dp">
 
                     <ImageView
                         android:id="@+id/lenin_image"
