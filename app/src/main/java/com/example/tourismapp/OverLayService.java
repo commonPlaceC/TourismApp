@@ -36,7 +36,6 @@ public class OverLayService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        // Create a notification channel for the service
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID_STR, "My Channel Name", NotificationManager.IMPORTANCE_DEFAULT);
@@ -66,7 +65,6 @@ public class OverLayService extends Service {
         }
 
         startForeground(CHANNEL_ID_INT, createNotification());
-        Log.i("OverLay", "Foreground working");
 
         Button button = manageView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -86,8 +84,8 @@ public class OverLayService extends Service {
     private Notification createNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "MyChannelId")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("Foreground Service")
-                .setContentText("Some description here")
+                .setContentTitle("Foreground Service: Tracking distance")
+                .setContentText("100m to get the VisitsPlace")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         return builder.build();
