@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.model;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -19,6 +19,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.core.app.NotificationCompat;
+
+import com.example.tourismapp.MainActivity;
+import com.example.tourismapp.R;
 
 public class OverLayService extends Service {
 
@@ -78,7 +81,7 @@ public class OverLayService extends Service {
             }
         });
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     private Notification createNotification() {

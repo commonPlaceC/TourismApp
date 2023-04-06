@@ -1,11 +1,10 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.example.tourismapp.model.Item;
+import com.example.tourismapp.model.MyRecyclerViewAdapter;
+import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +15,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 
-import com.example.tourismapp.databinding.ActivityMainBinding;
+import com.example.tourismapp.model.OverLayService;
+import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.ActivityPlaceCardBinding;
 
 public class PlaceCardActivity extends AppCompatActivity {

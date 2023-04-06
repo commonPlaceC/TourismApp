@@ -1,11 +1,10 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,8 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import android.view.View;
-
-import com.example.tourismapp.databinding.FragmentAddVisitThirdBinding;
 
 public class AddVisitThirdDialogFragment extends DialogFragment {
 

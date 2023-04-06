@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.model;
 
 public class Item {
     private final String text;

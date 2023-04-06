@@ -1,18 +1,15 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
-import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
 
 import java.util.Objects;
 

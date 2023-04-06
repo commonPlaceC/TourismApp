@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

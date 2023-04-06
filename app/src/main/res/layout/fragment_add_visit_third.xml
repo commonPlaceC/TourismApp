@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/nul"
     android:layout_height="@dimen/nul"
-    tools:context=".AddVisitThirdDialogFragment">
+    tools:context=".ui.AddVisitThirdDialogFragment">
 
 </FrameLayout>

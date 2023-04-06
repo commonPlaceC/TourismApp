@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,17 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-
-import com.example.tourismapp.databinding.FragmentAddVisitDialogBinding;
-import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
-
-import java.util.Objects;
 
 public class AddVisitDialogFragment extends DialogFragment {
 
