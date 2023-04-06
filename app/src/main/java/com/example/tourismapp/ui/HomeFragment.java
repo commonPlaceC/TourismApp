@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tourismapp.R;
+import com.example.tourismapp.databinding.FragmentHomeBinding;
 
 
 public class HomeFragment extends Fragment implements ChangeLocationDialogFragment.DialogListener {

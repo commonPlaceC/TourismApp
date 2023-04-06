@@ -12,6 +12,8 @@ import androidx.fragment.app.DialogFragment;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.tourismapp.databinding.FragmentAddVisitDialogBinding;
+
 public class AddVisitDialogFragment extends DialogFragment {
 
     public static final String TAG = "AddVisit";

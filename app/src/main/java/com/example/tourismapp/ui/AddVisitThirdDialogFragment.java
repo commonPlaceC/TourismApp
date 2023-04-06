@@ -13,6 +13,8 @@ import androidx.fragment.app.DialogFragment;
 
 import android.view.View;
 
+import com.example.tourismapp.databinding.FragmentAddVisitThirdBinding;
+
 public class AddVisitThirdDialogFragment extends DialogFragment {
 
 

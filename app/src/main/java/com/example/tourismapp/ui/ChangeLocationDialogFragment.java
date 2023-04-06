@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
+
 import java.util.Objects;
 
 public class ChangeLocationDialogFragment extends DialogFragment {
