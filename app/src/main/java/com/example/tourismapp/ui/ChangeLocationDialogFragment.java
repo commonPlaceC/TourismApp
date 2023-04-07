@@ -2,8 +2,11 @@ package com.example.tourismapp.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
+import com.example.tourismapp.model.UserSettings;
+import com.example.tourismapp.viewmodels.UserSettingsViewModel;
 
 import java.util.Objects;
 
@@ -19,15 +24,9 @@ public class ChangeLocationDialogFragment extends DialogFragment {
 
     public static final String TAG = "ChangeLocationDialogFragment";
     public FragmentChangeLocationBinding binding;
+    private UserSettingsViewModel viewModel;
     private String locationName = "";
 
-    public interface DialogListener {
-        void onDialogResult(String result);
-    }
-    private DialogListener listener;
-    public void setListener(DialogListener _listener) {
-        listener = _listener;
-    }
 
     public static ChangeLocationDialogFragment newInstance(String key, String value) {
         ChangeLocationDialogFragment dialogFragment = new ChangeLocationDialogFragment();
@@ -37,13 +36,7 @@ public class ChangeLocationDialogFragment extends DialogFragment {
 
         return dialogFragment;
     }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (!(requireArguments().getString("Location")).isEmpty()) {
-            locationName = requireArguments().getString("Location");
-        }
-    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -61,18 +54,23 @@ public class ChangeLocationDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         String input = editText.getText().toString();
-                        listener.onDialogResult(input);
+                        saveLocationToSharedPreferences(input);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        listener.onDialogResult("");
                         Objects.requireNonNull(ChangeLocationDialogFragment.this.getDialog()).cancel();
                     }
                 });
 
-        // Create the AlertDialog object and return it
         return builder.create();
+    }
+
+    private void saveLocationToSharedPreferences(String location) {
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Location", location);
+        editor.apply();
     }
 
 }

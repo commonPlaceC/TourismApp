@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,10 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tourismapp.MyRecyclerViewAdapter;
+import com.example.tourismapp.adapters.MyRecyclerViewAdapter;
 import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
 import com.example.tourismapp.model.Item;
+import com.example.tourismapp.model.Place;
+import com.example.tourismapp.viewmodels.PlaceViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +29,9 @@ import java.util.Map;
 
 public class VisitsListFragment extends Fragment {
     private FragmentVisitsListBinding binding;
+    private PlaceViewModel placeViewModel;
+    private RecyclerView recyclerView;
+    private MyRecyclerViewAdapter adapter;
     public VisitsListFragment() {
         super(R.layout.fragment_visits_list);
     }
@@ -35,33 +42,32 @@ public class VisitsListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //inflating
         binding = FragmentVisitsListBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
-        Bundle result = new Bundle();
-        result.putString("bundleKey", "result");
-        getParentFragmentManager().setFragmentResult("key", result);
-
-
-        SharedPreferences prefs = requireActivity().getSharedPreferences("Visits", Context.MODE_PRIVATE);
-        Map<String,?> allPrefs = prefs.getAll();
-        List<Item> itemArrayList = new ArrayList<>();
-
-
-
-        for (Map.Entry<String,?> entry : allPrefs.entrySet()){
-            itemArrayList.add(new Item(
-                    entry.getKey().toString() + " | " + entry.getValue().toString()
-            ));
-        }
-
-        RecyclerView itemList = binding.listItem;
+        recyclerView = binding.listItem;
+        adapter = new MyRecyclerViewAdapter(getContext(), new ArrayList<>());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(requireContext(), itemArrayList);
-        itemList.setLayoutManager(layoutManager);
-        itemList.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
+        placeViewModel.getPlacesLiveData().observe(getViewLifecycleOwner(), places -> {
+            if (places != null) {
+                List<Item> items = new ArrayList<>();
+                for (Place place: places) {
+                    items.add(new Item(place.getName()));
+                }
+                adapter.setItems(items);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }

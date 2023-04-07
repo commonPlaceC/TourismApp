@@ -1,12 +1,15 @@
 package com.example.tourismapp.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +19,15 @@ import android.widget.TextView;
 
 import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.FragmentHomeBinding;
+import com.example.tourismapp.model.UserSettings;
+import com.example.tourismapp.viewmodels.UserSettingsViewModel;
 
 
-public class HomeFragment extends Fragment implements ChangeLocationDialogFragment.DialogListener {
+public class HomeFragment extends Fragment {
 
     private static final String TAG = "Home";
     private static final String CHANNEL_ID = "no_1";
+    public UserSettingsViewModel viewModel;
     private FragmentHomeBinding binding;
 
     public HomeFragment() {
@@ -98,18 +104,33 @@ public class HomeFragment extends Fragment implements ChangeLocationDialogFragme
         return binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        observeLocation();
+    }
+
+    private void observeLocation() {
+        viewModel.getLocationLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onChanged(String location) {
+                ((TextView)binding.locationName).setText("Location +" + location);
+            }
+        });
+    }
+
     public void showMyDialog(String arg) {
         String location = ((TextView) binding.locationName).getText().toString().substring(9);
         ChangeLocationDialogFragment dialogFragment = ChangeLocationDialogFragment.newInstance("Location", location);
-        dialogFragment.setListener(this);
         dialogFragment.show(getParentFragmentManager(), ChangeLocationDialogFragment.TAG);
     }
 
-    @Override
-    public void onDialogResult(String result) {
-        if (!result.isEmpty()) {
-            String newLocationName = "Location: " + result;
-            ((TextView) binding.locationName).setText(newLocationName);
-        }
-    }
+//    @Override
+//    public void onDialogResult(String result) {
+//        if (!result.isEmpty()) {
+//            String newLocationName = "Location: " + result;
+//            ((TextView) binding.locationName).setText(newLocationName);
+//        }
+//    }
 }

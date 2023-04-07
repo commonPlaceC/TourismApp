@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tourismapp.R;
 import com.example.tourismapp.model.Item;
 
 import java.util.List;
@@ -18,9 +19,9 @@ import java.util.List;
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
-    private final List<Item> items;
+    private List<Item> items;
 
-    private Context mContext;
+    private final Context mContext;
 
     public MyRecyclerViewAdapter(Context context, List<Item> items) {
         this.inflater = LayoutInflater.from(context);
@@ -48,6 +49,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 Log.i("Adapter", "WORK");
             }
         });
+    }
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     @Override

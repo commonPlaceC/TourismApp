@@ -68,4 +68,13 @@ public class Place {
         this.image_id = image_id;
         this.tags = tags;
     }
+
+    public Place(int id, String name, String location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.description = "";
+        this.image_id = 0;
+        this.tags = null;
+    }
 }
