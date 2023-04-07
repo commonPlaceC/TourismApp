@@ -13,6 +13,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
 import com.example.tourismapp.model.UserSettings;
@@ -27,15 +28,6 @@ public class ChangeLocationDialogFragment extends DialogFragment {
     private UserSettingsViewModel viewModel;
     private String locationName = "";
 
-
-    public static ChangeLocationDialogFragment newInstance(String key, String value) {
-        ChangeLocationDialogFragment dialogFragment = new ChangeLocationDialogFragment();
-        Bundle args = new Bundle();
-        args.putString(key, value);
-        dialogFragment.setArguments(args);
-
-        return dialogFragment;
-    }
 
     @NonNull
     @Override
@@ -67,10 +59,10 @@ public class ChangeLocationDialogFragment extends DialogFragment {
     }
 
     private void setLocationToSharedPreferences(String location) {
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("Location", location);
-        editor.apply();
+        SharedPreferences sharedPrefs = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        viewModel = new ViewModelProvider(requireActivity()).get(UserSettingsViewModel.class);
+        viewModel.init(sharedPrefs);
+        viewModel.setLocation(location);
     }
 
 }

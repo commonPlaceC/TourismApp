@@ -1,5 +1,6 @@
 package com.example.tourismapp.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -54,6 +55,7 @@ public class VisitsListFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -63,7 +65,7 @@ public class VisitsListFragment extends Fragment {
             if (places != null) {
                 List<Item> items = new ArrayList<>();
                 for (Place place: places) {
-                    items.add(new Item(place.getName()));
+                    items.add(new Item(place.getName() + " | " + place.getLocation()));
                 }
                 adapter.setItems(items);
                 adapter.notifyDataSetChanged();

@@ -26,5 +26,4 @@ public class UserSettingsViewModel extends ViewModel {
     public void setLocation(String location) {
         repository.setLocation(location);
     }
-
 }
