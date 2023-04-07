@@ -1,7 +1,9 @@
 package com.example.tourismapp.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +12,9 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,18 +26,29 @@ import com.example.tourismapp.databinding.FragmentHomeBinding;
 import com.example.tourismapp.model.UserSettings;
 import com.example.tourismapp.viewmodels.UserSettingsViewModel;
 
+import org.w3c.dom.Text;
+
 
 public class HomeFragment extends Fragment {
 
     private static final String TAG = "Home";
     private static final String CHANNEL_ID = "no_1";
     public UserSettingsViewModel viewModel;
+
+    private SharedPreferences sharedPrefs;
     private FragmentHomeBinding binding;
 
     public HomeFragment() {
         super(R.layout.fragment_home);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedPrefs = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        viewModel = new ViewModelProvider(this).get(UserSettingsViewModel.class);
+        viewModel.init(sharedPrefs);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -88,7 +103,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String location = ((TextView) binding.locationName).getText().toString().substring(9);
-                showMyDialog(location);
+                showMyDialog();
             }
         });
 
@@ -105,32 +120,31 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        observeLocation();
+    public void onResume() {
+        super.onResume();
+        sharedPrefs.registerOnSharedPreferenceChangeListener(listener);
     }
 
-    private void observeLocation() {
-        viewModel.getLocationLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onChanged(String location) {
-                ((TextView)binding.locationName).setText("Location +" + location);
-            }
-        });
+    @Override
+    public void onPause() {
+        super.onPause();
+        sharedPrefs.unregisterOnSharedPreferenceChangeListener(listener);
     }
 
-    public void showMyDialog(String arg) {
-        String location = ((TextView) binding.locationName).getText().toString().substring(9);
-        ChangeLocationDialogFragment dialogFragment = ChangeLocationDialogFragment.newInstance("Location", location);
+    private final SharedPreferences.OnSharedPreferenceChangeListener listener =
+            new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                    if (key.equals("Location")) {
+                        String location = sharedPreferences.getString(key, "");
+                        viewModel.setLocation(location);
+                        ((TextView)binding.locationName).setText("Location: " + location);
+                    }
+                }
+            };
+
+    public void showMyDialog() {
+        ChangeLocationDialogFragment dialogFragment = new ChangeLocationDialogFragment();
         dialogFragment.show(getParentFragmentManager(), ChangeLocationDialogFragment.TAG);
     }
-
-//    @Override
-//    public void onDialogResult(String result) {
-//        if (!result.isEmpty()) {
-//            String newLocationName = "Location: " + result;
-//            ((TextView) binding.locationName).setText(newLocationName);
-//        }
-//    }
 }

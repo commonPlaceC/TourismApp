@@ -8,8 +8,6 @@ public class UserSettingsRepository {
 
     public UserSettingsRepository(SharedPreferences sharedPreferences) {
         sharedPrefs = sharedPreferences;
-        sharedPrefs.edit().putString("Location", "Moscow").apply();
-
     }
 
     public String getLocation() {

@@ -9,22 +9,22 @@ import androidx.lifecycle.ViewModel;
 import com.example.tourismapp.repositories.UserSettingsRepository;
 
 public class UserSettingsViewModel extends ViewModel {
-    private final UserSettingsRepository settingsRepository;
 
-    private final MutableLiveData<String> nameLiveData = new MutableLiveData<>();
+    private MutableLiveData<String> location = new MutableLiveData<>();
+    private UserSettingsRepository repository;
 
-    public UserSettingsViewModel(UserSettingsRepository settingsRepository) {
-        this.settingsRepository = settingsRepository;
-        nameLiveData.setValue(settingsRepository.getLocation());
+
+    public void init(SharedPreferences sharedPrefs) {
+        repository = new UserSettingsRepository(sharedPrefs);
+        location.setValue(repository.getLocation());
     }
 
-    public LiveData<String> getLocationLiveData() {
-        return nameLiveData;
+    public String getLocationLiveData() {
+        return repository.getLocation();
     }
 
     public void setLocation(String location) {
-        settingsRepository.setLocation(location);
-        nameLiveData.setValue(location);
+        repository.setLocation(location);
     }
 
 }

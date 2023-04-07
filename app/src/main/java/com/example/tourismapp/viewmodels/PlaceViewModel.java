@@ -10,7 +10,6 @@ import com.example.tourismapp.repositories.PlaceRepository;
 import java.util.List;
 
 public class PlaceViewModel extends ViewModel {
-    public LiveData<List<Place>> places;
 
     private MutableLiveData<List<Place>> placeListLiveData;
     private PlaceRepository placeRepository;

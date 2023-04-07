@@ -54,7 +54,7 @@ public class ChangeLocationDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         String input = editText.getText().toString();
-                        saveLocationToSharedPreferences(input);
+                        setLocationToSharedPreferences(input);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -66,7 +66,7 @@ public class ChangeLocationDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void saveLocationToSharedPreferences(String location) {
+    private void setLocationToSharedPreferences(String location) {
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("Location", location);
