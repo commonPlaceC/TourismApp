@@ -1,4 +1,4 @@
-package com.example.tourismapp.model;
+package com.example.tourismapp;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tourismapp.R;
+import com.example.tourismapp.model.Item;
 
 import java.util.List;
 

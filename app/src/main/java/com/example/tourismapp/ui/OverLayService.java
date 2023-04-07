@@ -1,4 +1,4 @@
-package com.example.tourismapp.model;
+package com.example.tourismapp.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;

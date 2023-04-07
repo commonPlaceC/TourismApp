@@ -13,10 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tourismapp.model.Item;
-import com.example.tourismapp.model.MyRecyclerViewAdapter;
+import com.example.tourismapp.MyRecyclerViewAdapter;
 import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
+import com.example.tourismapp.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
