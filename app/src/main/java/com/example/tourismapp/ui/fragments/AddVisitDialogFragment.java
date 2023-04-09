@@ -1,4 +1,4 @@
-package com.example.tourismapp.ui;
+package com.example.tourismapp.ui.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

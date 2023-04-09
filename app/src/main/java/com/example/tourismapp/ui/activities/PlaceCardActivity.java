@@ -1,4 +1,4 @@
-package com.example.tourismapp.ui;
+package com.example.tourismapp.ui.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

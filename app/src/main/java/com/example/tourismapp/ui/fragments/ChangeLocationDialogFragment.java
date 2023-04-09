@@ -1,4 +1,4 @@
-package com.example.tourismapp.ui;
+package com.example.tourismapp.ui.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -16,8 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tourismapp.databinding.FragmentChangeLocationBinding;
-import com.example.tourismapp.model.UserSettings;
-import com.example.tourismapp.viewmodels.UserSettingsViewModel;
+import com.example.tourismapp.ui.viewmodels.UserSettingsViewModel;
 
 import java.util.Objects;
 

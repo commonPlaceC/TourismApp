@@ -1,4 +1,4 @@
-package com.example.tourismapp.ui;
+package com.example.tourismapp.ui.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,10 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +21,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tourismapp.R;
+import com.example.tourismapp.data.model.Item;
+import com.example.tourismapp.data.model.Place;
 import com.example.tourismapp.databinding.FragmentHomeBinding;
-import com.example.tourismapp.model.UserSettings;
-import com.example.tourismapp.viewmodels.UserSettingsViewModel;
+import com.example.tourismapp.ui.activities.PlaceCardActivity;
+import com.example.tourismapp.ui.viewmodels.PlaceViewModel;
+import com.example.tourismapp.ui.viewmodels.UserSettingsViewModel;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
@@ -120,28 +125,16 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        sharedPrefs.registerOnSharedPreferenceChangeListener(listener);
-    }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        sharedPrefs.unregisterOnSharedPreferenceChangeListener(listener);
+        viewModel = new ViewModelProvider(this).get(UserSettingsViewModel.class);
+        viewModel.getLocationLiveData().observe(getViewLifecycleOwner(), userSettings -> {
+            if (userSettings.getLocation() != null) {
+                ((TextView)requireView().findViewById(R.id.locationName)).setText("Location: " + userSettings.getLocation());
+            }
+        });
     }
-
-    private final SharedPreferences.OnSharedPreferenceChangeListener listener =
-            new SharedPreferences.OnSharedPreferenceChangeListener() {
-                @Override
-                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                    if (key.equals("Location")) {
-                        String location = sharedPreferences.getString(key, "");
-                        viewModel.setLocation(location);
-                        ((TextView)binding.locationName).setText("Location: " + location);
-                    }
-                }
-            };
 
     public void showMyDialog() {
         ChangeLocationDialogFragment dialogFragment = new ChangeLocationDialogFragment();

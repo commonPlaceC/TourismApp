@@ -1,4 +1,4 @@
-package com.example.tourismapp.adapters;
+package com.example.tourismapp.data.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tourismapp.R;
-import com.example.tourismapp.model.Item;
+import com.example.tourismapp.data.model.Item;
 
 import java.util.List;
 
@@ -52,6 +52,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
     public void setItems(List<Item> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
 
     @Override

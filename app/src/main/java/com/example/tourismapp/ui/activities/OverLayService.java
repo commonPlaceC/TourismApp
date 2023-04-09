@@ -1,4 +1,4 @@
-package com.example.tourismapp.ui;
+package com.example.tourismapp.ui.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,6 @@ import android.widget.Button;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.tourismapp.MainActivity;
 import com.example.tourismapp.R;
 
 public class OverLayService extends Service {

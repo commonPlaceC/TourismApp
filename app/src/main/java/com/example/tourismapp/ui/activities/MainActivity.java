@@ -1,4 +1,4 @@
-package com.example.tourismapp;
+package com.example.tourismapp.ui.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +14,10 @@ import android.view.Window;
 
 import android.os.Bundle;
 
+import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.ActivityMainBinding;
-import com.example.tourismapp.ui.HomeFragment;
-import com.example.tourismapp.ui.VisitsListFragment;
+import com.example.tourismapp.ui.fragments.HomeFragment;
+import com.example.tourismapp.ui.fragments.VisitsListFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
 

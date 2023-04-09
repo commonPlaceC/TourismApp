@@ -16,10 +16,10 @@
         android:theme="@style/Theme.TourismApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.PlaceCardActivity"
+            android:name=".ui.activities.PlaceCardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ui.OverLayService" />
+        <service android:name=".ui.activities.OverLayService" />
     </application>
 
 </manifest>

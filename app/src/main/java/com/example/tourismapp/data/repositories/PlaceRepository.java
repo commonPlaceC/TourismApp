@@ -1,9 +1,9 @@
-package com.example.tourismapp.repositories;
+package com.example.tourismapp.data.repositories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.tourismapp.model.Place;
+import com.example.tourismapp.data.model.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +27,6 @@ public class PlaceRepository {
 
     public void removePlace(Place place) {
         placeList.remove(place);
-        placeListLiveData.setValue(placeList);
-    }
-
-    public void getPlaceList() {
         placeListLiveData.setValue(placeList);
     }
 

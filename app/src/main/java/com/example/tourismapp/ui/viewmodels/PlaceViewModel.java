@@ -1,22 +1,22 @@
-package com.example.tourismapp.viewmodels;
+package com.example.tourismapp.ui.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.tourismapp.model.Place;
-import com.example.tourismapp.repositories.PlaceRepository;
+import com.example.tourismapp.data.model.Place;
+import com.example.tourismapp.data.repositories.PlaceRepository;
 
 import java.util.List;
 
 public class PlaceViewModel extends ViewModel {
 
-    private MutableLiveData<List<Place>> placeListLiveData;
+    private LiveData<List<Place>> placeListLiveData;
     private PlaceRepository placeRepository;
 
     public PlaceViewModel() {
         placeRepository = new PlaceRepository();
-        placeListLiveData = (MutableLiveData<List<Place>>) placeRepository.getPlaceListLiveData();
+        placeListLiveData = placeRepository.getPlaceListLiveData();
     }
 
     public LiveData<List<Place>> getPlacesLiveData() {
@@ -25,11 +25,9 @@ public class PlaceViewModel extends ViewModel {
 
     public void addPlace(Place place) {
         placeRepository.addPlace(place);
-        placeListLiveData.setValue(placeRepository.getPlaceListLiveData().getValue());
     }
 
     public void removePlace(Place place) {
         placeRepository.removePlace(place);
-        placeListLiveData.setValue(placeRepository.getPlaceListLiveData().getValue());
     }
  }

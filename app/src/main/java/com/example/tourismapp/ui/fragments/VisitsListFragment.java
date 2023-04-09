@@ -1,8 +1,6 @@
-package com.example.tourismapp.ui;
+package com.example.tourismapp.ui.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,16 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tourismapp.adapters.MyRecyclerViewAdapter;
 import com.example.tourismapp.R;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
-import com.example.tourismapp.model.Item;
-import com.example.tourismapp.model.Place;
-import com.example.tourismapp.viewmodels.PlaceViewModel;
+import com.example.tourismapp.data.model.Item;
+import com.example.tourismapp.data.model.Place;
+import com.example.tourismapp.data.adapters.MyRecyclerViewAdapter;
+import com.example.tourismapp.ui.viewmodels.PlaceViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class VisitsListFragment extends Fragment {
@@ -68,7 +65,6 @@ public class VisitsListFragment extends Fragment {
                     items.add(new Item(place.getName() + " | " + place.getLocation()));
                 }
                 adapter.setItems(items);
-                adapter.notifyDataSetChanged();
             }
         });
     }
