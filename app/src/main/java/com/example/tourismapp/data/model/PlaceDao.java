@@ -18,8 +18,11 @@ public interface PlaceDao {
     List<PlaceEntity> loadAllByIds(int[] ids);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertPlace(PlaceEntity place);
+    void insert(PlaceEntity place);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<PlaceEntity> places);
+
+    @Delete
+    void delete(PlaceEntity place);
 }

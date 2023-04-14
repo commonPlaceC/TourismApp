@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tourismapp.R;
+import com.example.tourismapp.data.model.PlaceEntity;
 import com.example.tourismapp.databinding.FragmentVisitsListBinding;
 import com.example.tourismapp.data.model.Item;
 import com.example.tourismapp.data.model.Place;
@@ -58,10 +59,11 @@ public class VisitsListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
+        placeViewModel.init(getContext());
         placeViewModel.getPlacesLiveData().observe(getViewLifecycleOwner(), places -> {
             if (places != null) {
                 List<Item> items = new ArrayList<>();
-                for (Place place: places) {
+                for (PlaceEntity place: places) {
                     items.add(new Item(place.getName() + " | " + place.getLocation()));
                 }
                 adapter.setItems(items);
