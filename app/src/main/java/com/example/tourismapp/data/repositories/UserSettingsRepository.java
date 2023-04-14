@@ -23,6 +23,7 @@ public class UserSettingsRepository {
 
     public void setLocation(String location) {
         settingsLiveData.setValue(new UserSettings(location));
-        sharedPrefs.edit().putString("Location", location).apply();
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.putString("Location", location).apply();
     }
 }

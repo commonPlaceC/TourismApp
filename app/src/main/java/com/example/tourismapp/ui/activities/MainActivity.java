@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationBarView bottomNavigationView = binding.bottomnav;
         switchFragment(new HomeFragment());
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             Fragment fragment;
             @SuppressLint("NonConstantResourceId")
