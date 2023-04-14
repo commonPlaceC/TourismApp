@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         sharedPrefs = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         viewModel = new ViewModelProvider(this).get(UserSettingsViewModel.class);
-        viewModel.init(sharedPrefs);
+        viewModel.init(requireActivity().getApplicationContext(), sharedPrefs);
     }
 
     @Override

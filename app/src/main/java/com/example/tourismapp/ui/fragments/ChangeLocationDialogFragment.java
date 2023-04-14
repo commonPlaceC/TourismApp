@@ -60,7 +60,7 @@ public class ChangeLocationDialogFragment extends DialogFragment {
     private void setLocationToSharedPreferences(String location) {
         SharedPreferences sharedPrefs = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         viewModel = new ViewModelProvider(requireActivity()).get(UserSettingsViewModel.class);
-        viewModel.init(sharedPrefs);
+        viewModel.init(requireActivity().getApplicationContext(), sharedPrefs);
         viewModel.setLocation(location);
     }
 
